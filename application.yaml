@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: currency-converter
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mail2prasanthv/currency-converter-app-argocd-tutorial.git
+    targetRevision: HEAD
+    path: dev-environment # folder in the git repository
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ns-microservices # argo cd will automatically create this namespace
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+  automated: # This enables polls Git Repository every 3 minutes
+    selfHeal: true
+    prune: true
