@@ -15,6 +15,6 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-  automated: # This enables polls Git Repository every 3 minutes
-    selfHeal: true
-    prune: true
+    automated: # This enables polls Git Repository every 3 minutes
+      selfHeal: true
+      prune: true
